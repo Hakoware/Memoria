@@ -1,7 +1,8 @@
 <ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" editor-extension-mode="False">
     <ui:VisualElement style="flex-grow: 1; height: 194px; width: 482px;">
         <ui:DropdownField label="Fenómeno" name="dropdown" style="height: 31px;" />
-        <ui:SliderInt label="Intensidad" high-value="15" name="SliderInt" low-value="0" style="justify-content: flex-end; flex-direction: row-reverse; height: 33px;" />
-        <ui:Button name="ToggleButton" text="Abrir/Cerrar Menú" style="height: 40px; width: 150px; margin-top: 10px;" />
+        <ui:SliderInt label="Intensidad" high-value="15" name="SliderInt" low-value="0" style="justify-content: flex-end; flex-direction: row; height: 33px; width: 475px; align-items: auto;" />
     </ui:VisualElement>
+    <ui:Button text="Change Scene Test" name="sceneChangeButton" parse-escape-sequences="true" display-tooltip-when-elided="true" style="height: 36px;" />
+    <ui:GroupBox />
 </ui:UXML>
