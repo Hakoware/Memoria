@@ -171,6 +171,7 @@ public class ONNXManager : MonoBehaviour
             
             //Force over life time
             var force = particleCollisionHandler.activeParticleSystem.forceOverLifetime;
+            force.enabled = true;
             force.x = data[2];
             force.y = data[3];
 
@@ -193,6 +194,7 @@ public class ONNXManager : MonoBehaviour
             
             //Force over life time
             var force = SnowParticleCollisionHandler.activeParticleSystem.forceOverLifetime;
+            force.enabled = true;
             force.x = data[2];
             force.y = data[3];
 
