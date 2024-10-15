@@ -49,7 +49,7 @@ public class SnowParticleCollisionHandler : MonoBehaviour
             float additionalHeight = 10f; 
             Vector3 particlePosition = referenceObject.position + Vector3.up * additionalHeight;
             
-            particleObject.transform.position = referenceObject.position + Vector3.up * 10f *additionalHeight;
+            particleObject.transform.position = referenceObject.position + Vector3.up*additionalHeight;
             // Instance
             //activeParticleSystem = Instantiate(particleSystemPrefab, particlePosition, Quaternion.identity);
             activeParticleSystem = particleObject.AddComponent<ParticleSystem>();
