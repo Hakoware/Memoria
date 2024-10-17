@@ -1,9 +1,10 @@
+using System;
 using UnityEngine;
 
 [RequireComponent(typeof(Camera))]
 public class FlyCamera : MonoBehaviour
 {
-    public float acceleration = 50; // how fast you accelerate
+    public float acceleration = 15; // how fast you accelerate
     public float accSprintMultiplier = 4; // how much faster you go when "sprinting"
     public float lookSensitivity = 1; // mouse look sensitivity
     public float dampingCoefficient = 5; // how quickly you break to a halt after you stop your input
@@ -44,6 +45,12 @@ public class FlyCamera : MonoBehaviour
             Cursor.visible = true; // Displays cursor when the mouse wheel is released
             Cursor.lockState = CursorLockMode.None; // Unlock the cursor
         }
+    }
+
+    private void Start()
+    {
+        acceleration = 15;
+        dampingCoefficient = 2;
     }
 
     void UpdateInput()
