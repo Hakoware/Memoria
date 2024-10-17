@@ -427,7 +427,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   particleSystemPrefab: {fileID: 0}
-  referenceObject: {fileID: 1609192435}
+  referenceObject: {fileID: 0}
   snowModelAsset: {fileID: 2100000, guid: 8ef7a75dac8003441912e64155e7cc55, type: 2}
   meshMaterial: {fileID: 2100000, guid: 2f4b34c7cd860da47a503438cdaa313e, type: 2}
   activeParticleSystem: {fileID: 0}
@@ -554,7 +554,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7b12235969cc03c4e8b4475d0ec5fc18, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sceneToLoad: GSTestScene
+  sceneToLoad: Tree
 --- !u!1 &1068852959
 GameObject:
   m_ObjectHideFlags: 0
@@ -831,6 +831,67 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 96893311}
   m_SourcePrefab: {fileID: 100100000, guid: c3502da9b5ff6764980f0877a51d474f, type: 3}
+--- !u!1 &1345880077
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1345880079}
+  - component: {fileID: 1345880078}
+  m_Layer: 0
+  m_Name: GaussianSplats (1)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1345880078
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1345880077}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c12d929a7f62c48adbe9ff45c9a33ff0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Asset: {fileID: 11400000, guid: d3c46f7976f3d6b4b87bb8c9268385dd, type: 2}
+  m_SplatScale: 1
+  m_OpacityScale: 1
+  m_SHOrder: 3
+  m_SHOnly: 0
+  m_SortNthFrame: 1
+  m_RenderMode: 0
+  m_PointDisplaySize: 4.07
+  m_Cutouts:
+  - {fileID: 0}
+  - {fileID: 1699426158}
+  m_ShaderSplats: {fileID: 4800000, guid: 5722cec625935924d80163b3f8c3afa1, type: 3}
+  m_ShaderComposite: {fileID: 4800000, guid: 4b46917b8fb1a4d42b0065802b25faff, type: 3}
+  m_ShaderDebugPoints: {fileID: 4800000, guid: 0154e66215a41e240889cef83e526247, type: 3}
+  m_ShaderDebugBoxes: {fileID: 4800000, guid: 99ba2f885d844344685a3e885fb71fb7, type: 3}
+  m_CSSplatUtilities: {fileID: 7200000, guid: 73290fa5a13d729459efd9d0353c37b3, type: 3}
+--- !u!4 &1345880079
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1345880077}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0.9837878, y: -0.056287136, z: 0.17027411, w: 0.00037875166}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1.0884, y: 1.0884, z: -1.0884}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 1699426159}
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: -181.056, y: 19.580002, z: -6.3670044}
 --- !u!1 &1462254335
 GameObject:
   m_ObjectHideFlags: 0
@@ -988,7 +1049,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   particleSystemPrefab: {fileID: 1685705821}
-  referenceObject: {fileID: 1609192435}
+  referenceObject: {fileID: 0}
   rainDropMaterial: {fileID: 2100000, guid: 1c736a28bed637f45bd33c92423423b1, type: 2}
   meshMaterial: {fileID: 2100000, guid: 2f4b34c7cd860da47a503438cdaa313e, type: 2}
   activeParticleSystem: {fileID: 0}
@@ -1054,67 +1115,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 16.333, y: -20.861, z: -11.605}
---- !u!1 &1609192433
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1609192435}
-  - component: {fileID: 1609192434}
-  m_Layer: 0
-  m_Name: GaussianSplats
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &1609192434
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1609192433}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c12d929a7f62c48adbe9ff45c9a33ff0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Asset: {fileID: 11400000, guid: ca6760361c5dbfc44a35c542b0798958, type: 2}
-  m_SplatScale: 1
-  m_OpacityScale: 1
-  m_SHOrder: 3
-  m_SHOnly: 0
-  m_SortNthFrame: 1
-  m_RenderMode: 0
-  m_PointDisplaySize: 3
-  m_Cutouts:
-  - {fileID: 0}
-  - {fileID: 1938087594}
-  m_ShaderSplats: {fileID: 4800000, guid: ed800126ae8844a67aad1974ddddd59c, type: 3}
-  m_ShaderComposite: {fileID: 4800000, guid: 7e184af7d01193a408eb916d8acafff9, type: 3}
-  m_ShaderDebugPoints: {fileID: 4800000, guid: b44409fc67214394f8f47e4e2648425e, type: 3}
-  m_ShaderDebugBoxes: {fileID: 4800000, guid: 4006f2680fd7c8b4cbcb881454c782be, type: 3}
-  m_CSSplatUtilities: {fileID: 7200000, guid: ec84f78b836bd4f96a105d6b804f08bd, type: 3}
---- !u!4 &1609192435
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1609192433}
-  serializedVersion: 2
-  m_LocalRotation: {x: -0.9837878, y: -0.056287136, z: 0.17027411, w: 0.00037875166}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1.0884, y: 1.0884, z: -1.0884}
-  m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 1938087593}
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: -181.056, y: 19.580002, z: -6.3670044}
 --- !u!1 &1685705818
 GameObject:
   m_ObjectHideFlags: 0
@@ -5945,7 +5945,7 @@ ParticleSystem:
         m_PostInfinity: 2
         m_RotationOrder: 4
     vectorLabel1_3: W
---- !u!1 &1938087592
+--- !u!1 &1699426157
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -5953,8 +5953,8 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 1938087593}
-  - component: {fileID: 1938087594}
+  - component: {fileID: 1699426159}
+  - component: {fileID: 1699426158}
   m_Layer: 0
   m_Name: GSCutout
   m_TagString: Untagged
@@ -5962,28 +5962,13 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &1938087593
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1938087592}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 17.795061, y: 7.6367674, z: 18.736689}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 1609192435}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1938087594
+--- !u!114 &1699426158
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1938087592}
+  m_GameObject: {fileID: 1699426157}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2c57a1c501bd05549ae157cc474bd4c4, type: 3}
@@ -5991,6 +5976,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Type: 0
   m_Invert: 0
+--- !u!4 &1699426159
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1699426157}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 17.795061, y: 7.6367674, z: 18.736689}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1345880079}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1973998583
 GameObject:
   m_ObjectHideFlags: 0
@@ -6043,7 +6043,6 @@ SceneRoots:
   m_Roots:
   - {fileID: 231550835}
   - {fileID: 1462254338}
-  - {fileID: 1609192435}
   - {fileID: 1237982164}
   - {fileID: 1607045046}
   - {fileID: 1068852963}
@@ -6054,3 +6053,4 @@ SceneRoots:
   - {fileID: 934372800}
   - {fileID: 1973998585}
   - {fileID: 1044853064}
+  - {fileID: 1345880079}
