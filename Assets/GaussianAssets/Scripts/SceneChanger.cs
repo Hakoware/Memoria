@@ -16,6 +16,7 @@ public class SceneChangerUIToolkit : MonoBehaviour
 
         // Encuentra el botón por su nombre
         sceneChangeButton = root.Q<Button>("sceneChangeButton");
+        sceneChangeButton.focusable = false;
 
         // Añadir el evento para cuando se haga clic
         sceneChangeButton.clicked += () => ChangeScene();
