@@ -12,6 +12,8 @@ public class ONNXManager : MonoBehaviour
     private Worker worker;
     private Model runtimeModel;
     
+    private FloatField precipitationField;
+    
     //Particle system
     //public ParticleSystem rainParticleSystem;
     //public ParticleSystem snowParticleSystem;
@@ -28,6 +30,7 @@ public class ONNXManager : MonoBehaviour
         //Dropdown
         var dropdown = root.Q<DropdownField>("dropdown");
         dropdown.choices = new List<string> { "Lluvia", "Nieve" };
+        dropdown.focusable = false;
         //dropdown.value = "Lluvia"; //Default value
         
         dropdown.RegisterValueChangedCallback(evt =>
@@ -55,6 +58,9 @@ public class ONNXManager : MonoBehaviour
             }
             
         });
+
+        precipitationField = root.Q<FloatField>("precipitation");
+        precipitationField.focusable = false;
         /*
 
         // Load the runtime model using ModelAsset
@@ -71,6 +77,11 @@ public class ONNXManager : MonoBehaviour
         worker?.Dispose();
         // Create a worker using the runtime model, selecting the backend
         worker = new Worker(runtimeModel, BackendType.GPUCompute); // Use BackendType.CPU if GPUCompute is not available
+    }
+
+    void ChangePrecipitationField(float newValue)
+    {
+        precipitationField.value = newValue;
     }
 
     void ChangePhenomenonMode(string phenomenonMode)
@@ -118,6 +129,8 @@ public class ONNXManager : MonoBehaviour
         {
             Debug.LogError("Model output array is too short. Expected at least 3 elements.");
         }
+        
+        ChangePrecipitationField(results[0]);
 
         // Release resources
         intensityTensor.Dispose();
