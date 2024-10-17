@@ -1,8 +1,11 @@
 <ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" editor-extension-mode="False">
-    <ui:VisualElement style="flex-grow: 1; height: 194px; width: 482px;">
-        <ui:DropdownField label="Fenómeno" name="dropdown" style="height: 31px;" />
-        <ui:SliderInt label="Intensidad" high-value="15" name="SliderInt" low-value="0" style="justify-content: flex-end; flex-direction: row; height: 33px; width: 475px; align-items: auto;" />
+    <Style src="project://database/Assets/GaussianAssets/Materials/UIStyle.uss?fileID=7433441132597879392&amp;guid=9d5e2fa294920b0469f1233efc29ec91&amp;type=3#UIStyle" />
+    <ui:VisualElement style="flex-grow: 1; height: 482px; width: 499px;">
+        <ui:GroupBox name="GroupBox">
+            <ui:DropdownField label="Fenómeno" name="dropdown" style="height: 31px; translate: 0 0;" />
+            <ui:SliderInt label="Intensidad" high-value="15" name="SliderInt" low-value="0" style="justify-content: flex-end; flex-direction: row; height: 33px; width: 475px; align-items: auto;" />
+        </ui:GroupBox>
+        <ui:Button text="Change Scene Test" name="sceneChangeButton" parse-escape-sequences="true" display-tooltip-when-elided="true" focusable="true" class="buttom" style="height: 36px; -unity-text-align: middle-left; border-left-color: rgb(20, 22, 20); border-right-color: rgb(20, 22, 20); border-top-color: rgb(20, 22, 20); border-bottom-color: rgb(20, 22, 20); transition-property: all, ignored, ignored; transition-duration: 0s, 0s, 0s; transition-timing-function: ease, ease, ease; transition-delay: 0s, 0s, 0s; background-color: rgb(136, 197, 107);" />
+        <ui:FloatField label="Float Field" value="42,2" name="precipitation" style="height: 38px; width: 227px;" />
     </ui:VisualElement>
-    <ui:Button text="Change Scene Test" name="sceneChangeButton" parse-escape-sequences="true" display-tooltip-when-elided="true" style="height: 36px;" />
-    <ui:GroupBox />
 </ui:UXML>
