@@ -15,6 +15,7 @@ public class SceneChangerUIToolkit : MonoBehaviour
         sceneChangeButton = root.Q<Button>("sceneChangeButton");
         sceneChangeButton.focusable = false;
         sceneChangeButton.clicked += () => ChangeScene();
+        
     }
     void ChangeScene()
     {
