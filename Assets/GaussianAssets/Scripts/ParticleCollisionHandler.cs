@@ -111,6 +111,11 @@ public class ParticleCollisionHandler : MonoBehaviour
         renderer.cameraVelocityScale = 0.0f;
         renderer.velocityScale = 0.01f;
         renderer.lengthScale = 1f;
+        
+        // Desactivar sombras para las partículas de lluvia
+        renderer.shadowCastingMode = UnityEngine.Rendering.ShadowCastingMode.Off;
+        renderer.receiveShadows = false;
+
 
         //renderer.mesh = Resources.GetBuiltinResource<Mesh>("Sphere.fbx"); // Sphere render
         //renderer.mesh = Resources.GetBuiltinResource<Mesh>("Quad.fbx");
