@@ -12,7 +12,7 @@ public class ONNXManager : MonoBehaviour
     private Worker worker;
     private Model runtimeModel;
     
-    private FloatField precipitationField;
+    private FloatField precipitationField; //for rain and snow
     
     //Particle system
     //public ParticleSystem rainParticleSystem;
@@ -29,7 +29,7 @@ public class ONNXManager : MonoBehaviour
         //root.Add(uiInstance);
         //Dropdown
         var dropdown = root.Q<DropdownField>("dropdown");
-        dropdown.choices = new List<string> { "Lluvia", "Nieve" };
+        dropdown.choices = new List<string> { "Rain", "Snow" };
         dropdown.focusable = false;
         //dropdown.value = "Lluvia"; //Default value
         
@@ -48,11 +48,11 @@ public class ONNXManager : MonoBehaviour
             //Debug.Log("Slider Value: " + sliderValue);
             Debug.Log("evento test" + dropdown.value);
             
-            if (dropdown.value == "Lluvia")
+            if (dropdown.value == "Rain")
             {
                 RunModel(sliderValue);
             }
-            else if (dropdown.value  == "Nieve")
+            else if (dropdown.value  == "Snow")
             {
                 RunSnowModel(sliderValue);
             }
@@ -79,21 +79,23 @@ public class ONNXManager : MonoBehaviour
         worker = new Worker(runtimeModel, BackendType.GPUCompute); // Use BackendType.CPU if GPUCompute is not available
     }
 
+    //Apply for rain and snow
     void ChangePrecipitationField(float newValue)
     {
         precipitationField.value = newValue;
     }
+    
 
     void ChangePhenomenonMode(string phenomenonMode)
     {
-        if (phenomenonMode != null && phenomenonMode == "Lluvia")
+        if (phenomenonMode != null && phenomenonMode == "Rain")
         {
             LoadModel(rainModelAsset); //Load the rain mode
             particleCollisionHandler.activeParticleSystem.gameObject.SetActive(true);
             SnowParticleCollisionHandler.GetActiveParticleSystem().gameObject.SetActive(false);
             
         }
-        else if(phenomenonMode != null && phenomenonMode == "Nieve")
+        else if(phenomenonMode != null && phenomenonMode == "Snow")
         {
             LoadModel(snowModelAsset);
             particleCollisionHandler.activeParticleSystem.gameObject.SetActive(false); //rain particle system deactivate
@@ -165,6 +167,7 @@ public class ONNXManager : MonoBehaviour
         {
             Debug.LogError("Model output array is too short. Expected at least 3 elements.");
         }
+        ChangePrecipitationField(results[0]);
 
         // Release resources
         intensityTensor.Dispose();

@@ -9,6 +9,6 @@ EditorBuildSettings:
     path: Assets/Scenes/Tree.unity
     guid: ca13622d0f7f243a3a3020f3b8b0650f
   - enabled: 1
-    path: Assets/Scenes/PlayGround.unity
+    path: Assets/Scenes/Playground.unity
     guid: 304963de8f12f8c4493089e361706fcb
   m_configObjects: {}

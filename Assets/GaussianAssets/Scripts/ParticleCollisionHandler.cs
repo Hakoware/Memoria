@@ -73,11 +73,11 @@ public class ParticleCollisionHandler : MonoBehaviour
         // Gravity and main module
         Debug.Log("Se configura o no??");
         var mainModule = rainParticleSystem.main;
-        mainModule.startSpeed = Random.Range(10.0f, 20.0f);
+        mainModule.startSpeed = Random.Range(15.0f, 20.0f);
         mainModule.gravityModifier = 9.8f; 
         mainModule.startLifetime = Random.Range(1.0f, 2.0f); 
         mainModule.scalingMode = ParticleSystemScalingMode.Shape;
-        mainModule.startSize = Random.Range(0.01f, 0.03f);
+        mainModule.startSize = Random.Range(0.005f, 0.008f);
         mainModule.maxParticles = 10000; 
         //test
         //mainModule.startSize = 0.5f;
@@ -110,7 +110,7 @@ public class ParticleCollisionHandler : MonoBehaviour
         renderer.renderMode = ParticleSystemRenderMode.Stretch;
         renderer.cameraVelocityScale = 0.0f;
         renderer.velocityScale = 0.01f;
-        renderer.lengthScale = 4f;
+        renderer.lengthScale = 1f;
 
         //renderer.mesh = Resources.GetBuiltinResource<Mesh>("Sphere.fbx"); // Sphere render
         //renderer.mesh = Resources.GetBuiltinResource<Mesh>("Quad.fbx");
@@ -131,7 +131,7 @@ public class ParticleCollisionHandler : MonoBehaviour
     {
         // Crear el sistema de partículas del splash
         ParticleSystem splashParticleSystem = new GameObject("SplashParticles").AddComponent<ParticleSystem>();
-        splashParticleSystem.transform.SetParent(parentParticleSystem.transform); // Añadirlo como hijo del sistema principal
+        splashParticleSystem.transform.SetParent(parentParticleSystem.transform); 
         
         // Configuración del subemitter (splash)
         var mainModule = splashParticleSystem.main;

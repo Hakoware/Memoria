@@ -1,11 +1,13 @@
 <ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" editor-extension-mode="False">
     <Style src="project://database/Assets/GaussianAssets/Materials/UIStyle.uss?fileID=7433441132597879392&amp;guid=9d5e2fa294920b0469f1233efc29ec91&amp;type=3#UIStyle" />
-    <ui:VisualElement style="flex-grow: 1; height: 482px; width: 499px;">
-        <ui:GroupBox name="GroupBox">
-            <ui:DropdownField label="Fenómeno" name="dropdown" style="height: 31px; translate: 0 0;" />
-            <ui:SliderInt label="Intensidad" high-value="15" name="SliderInt" low-value="0" style="justify-content: flex-end; flex-direction: row; height: 33px; width: 475px; align-items: auto;" />
-        </ui:GroupBox>
-        <ui:Button text="Change Scene Test" name="sceneChangeButton" parse-escape-sequences="true" display-tooltip-when-elided="true" focusable="true" class="buttom" style="height: 36px; -unity-text-align: middle-left; border-left-color: rgb(20, 22, 20); border-right-color: rgb(20, 22, 20); border-top-color: rgb(20, 22, 20); border-bottom-color: rgb(20, 22, 20); transition-property: all, ignored, ignored; transition-duration: 0s, 0s, 0s; transition-timing-function: ease, ease, ease; transition-delay: 0s, 0s, 0s; background-color: rgb(136, 197, 107);" />
-        <ui:FloatField label="Float Field" value="42,2" name="precipitation" style="height: 38px; width: 227px;" />
+    <ui:VisualElement name="VisualElementSuperior" focusable="false" class="VisualElement">
+        <ui:VisualElement style="flex-grow: 1;">
+            <ui:DropdownField label="Phenomenon" name="dropdown" class="dropdown-container" style="height: 28px; width: 278px; padding-right: 5px;" />
+            <ui:SliderInt label="Intensity" high-value="15" name="SliderInt" low-value="0" style="justify-content: flex-end; flex-direction: row; height: 27px; width: 277px; align-items: auto; padding-left: -19px;" />
+        </ui:VisualElement>
+        <ui:DropdownField label="Scene" name="Scene" class="DropdownField dropdown-container" style="height: 27px; width: 20%; justify-content: space-around; align-self: flex-start; position: relative; top: 0; left: 0; right: 0; overflow: hidden;" />
+    </ui:VisualElement>
+    <ui:VisualElement name="VisualElementInferior" focusable="false" class="VisualElementInferior" style="margin-top: auto;">
+        <ui:FloatField label="Precipitation" value="42,2" name="precipitation" style="height: -132px; width: 103px; align-items: flex-start; flex-direction: column; justify-content: space-between; position: relative; top: -1px; left: 7px; bottom: 14px;" />
     </ui:VisualElement>
 </ui:UXML>
