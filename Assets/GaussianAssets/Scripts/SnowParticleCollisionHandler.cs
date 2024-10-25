@@ -17,7 +17,7 @@ public class SnowParticleCollisionHandler : MonoBehaviour
     public GameObject meshTarget;
     void Start()
     {
-     
+
         RenderSettings.fog = true;
         RenderSettings.fogColor = Color.white;
         RenderSettings.fogMode = FogMode.Exponential;
@@ -51,17 +51,17 @@ public class SnowParticleCollisionHandler : MonoBehaviour
         {
             GameObject particleObject = new GameObject("SnowParticleSystem");
             // Height start
-            float additionalHeight = 10f;
+            float additionalHeight = 5f;
             Vector3 particlePosition = referenceObject.position + Vector3.up * additionalHeight;
 
             particleObject.transform.position = referenceObject.position + Vector3.up * additionalHeight;
             // Instance
             activeParticleSystem = particleObject.AddComponent<ParticleSystem>();
-            
+
             activeParticleSystem.transform.rotation = Quaternion.Euler(90f, 0f, 0f);
-     
+
             ConfigureSnowParticleSystem(activeParticleSystem);
-           
+
             activeParticleSystem.Play();
         }
         else
@@ -76,21 +76,22 @@ public class SnowParticleCollisionHandler : MonoBehaviour
         // Gravity and main module
         var mainModule = snowParticleSystem.main;
         mainModule.startSpeed = Random.Range(0.5f, 2.0f);
-        mainModule.gravityModifier = 0.05f;  
-        mainModule.startLifetime = Random.Range(5.0f, 12.0f);
+        mainModule.gravityModifier = 0.05f;
+        mainModule.startLifetime = Random.Range(5f, 10f);
         mainModule.scalingMode = ParticleSystemScalingMode.Shape;
-        mainModule.startSize = Random.Range(0.02f, 0.05f); 
+        mainModule.startSize = Random.Range(0.02f, 0.05f);
         mainModule.maxParticles = 10000;
-        mainModule.simulationSpace = ParticleSystemSimulationSpace.World; 
+        //mainModule.simulationSpace = ParticleSystemSimulationSpace.World; 
 
         // Emission rate for continuous snow
         var emissionModule = snowParticleSystem.emission;
-        emissionModule.rateOverTime = 500f; 
+        emissionModule.enabled = true;
 
         // Emission area (ideal wide box)
         var shapeModule = snowParticleSystem.shape;
-        shapeModule.shapeType = ParticleSystemShapeType.Box;  
-        shapeModule.scale = new Vector3(100.0f, 1.0f, 100.0f); 
+        shapeModule.shapeType = ParticleSystemShapeType.Rectangle;
+        shapeModule.scale = new Vector3(10.0f, 10.0f, 10.0f);
+        shapeModule.rotation = new Vector3(0f, 0f, 0f);
 
         // Collision handler
         var collisionModule = snowParticleSystem.collision;
@@ -98,15 +99,15 @@ public class SnowParticleCollisionHandler : MonoBehaviour
         collisionModule.enableDynamicColliders = true;
         collisionModule.type = ParticleSystemCollisionType.World;
         collisionModule.collidesWith = LayerMask.GetMask("Default", "Ground", "MeshColliderLayer");
-        collisionModule.bounce = 0.0f;
+        collisionModule.bounce = 0.1f;
         collisionModule.lifetimeLoss = 0.8f;  // 
         collisionModule.dampen = 0.7f; // More dampening for softer landing
         collisionModule.quality = ParticleSystemCollisionQuality.High;
 
         // Renderer (material and mesh)
         var renderer = snowParticleSystem.GetComponent<ParticleSystemRenderer>();
-        renderer.renderMode = ParticleSystemRenderMode.Billboard; 
-        renderer.mesh = Resources.GetBuiltinResource<Mesh>("Sphere.fbx"); 
+        renderer.renderMode = ParticleSystemRenderMode.Billboard;
+        //renderer.mesh = Resources.GetBuiltinResource<Mesh>("Sphere.fbx"); 
         renderer.cameraVelocityScale = 0.0f;
         renderer.velocityScale = 0.01f;
         renderer.lengthScale = 1f;
@@ -114,7 +115,7 @@ public class SnowParticleCollisionHandler : MonoBehaviour
         if (snowModelAsset != null)
         {
             renderer.material = snowModelAsset;
-            renderer.material.color = Color.white; 
+            renderer.material.color = Color.white;
         }
         else
         {
@@ -122,12 +123,14 @@ public class SnowParticleCollisionHandler : MonoBehaviour
         }
 
         // Add wind effect to make snow more dynamic
+
         var forceOverLifetime = snowParticleSystem.forceOverLifetime;
         forceOverLifetime.enabled = true;
-        forceOverLifetime.x = new ParticleSystem.MinMaxCurve(-0.5f, 0.5f); 
-        forceOverLifetime.z = new ParticleSystem.MinMaxCurve(-0.5f, 0.5f); 
+        forceOverLifetime.x = new ParticleSystem.MinMaxCurve(-0.5f, 0.5f);
+        forceOverLifetime.y = new ParticleSystem.MinMaxCurve(-0.5f, 0.5f);
 
         // Add noise module for random wind variation
+
         var noiseModule = snowParticleSystem.noise;
         noiseModule.enabled = true;
         noiseModule.strength = new ParticleSystem.MinMaxCurve(0.1f, 0.3f); //
