@@ -205,14 +205,19 @@ public class ONNXManager : MonoBehaviour
         if (SnowParticleCollisionHandler != null && SnowParticleCollisionHandler.activeParticleSystem != null)
         {
             var emission = SnowParticleCollisionHandler.activeParticleSystem.emission;
-            emission.rateOverTime = Mathf.Max(data[4], 0); 
+            emission.rateOverTime = Mathf.Max(data[3], 0); 
+            
+            //Change starSize
+            //var mainModule = SnowParticleCollisionHandler.activeParticleSystem.main;
+            //mainModule.startSize = data[4];
+            
             //emission.rateOverTime = emissionRate;
             
             //Force over life time
             var force = SnowParticleCollisionHandler.activeParticleSystem.forceOverLifetime;
             force.enabled = true;
-            force.x = data[2];
-            force.y = data[3];
+            //force.x = data[1]/10;
+            //force.y = data[1]/10; // /over 10 to adjust
 
         }
     }
