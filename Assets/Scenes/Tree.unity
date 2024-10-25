@@ -498,7 +498,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rainModelAsset: {fileID: 5022602860645237092, guid: f67f5ed6c1a62e54d8ac1e61b885d25a, type: 3}
-  snowModelAsset: {fileID: 5022602860645237092, guid: f67f5ed6c1a62e54d8ac1e61b885d25a, type: 3}
+  snowModelAsset: {fileID: 5022602860645237092, guid: 755b8e9dedc81f94d9f67e685841746c, type: 3}
   particleCollisionHandler: {fileID: 1543035354}
   SnowParticleCollisionHandler: {fileID: 1044853063}
 --- !u!114 &1058297138

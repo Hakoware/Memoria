@@ -20,7 +20,7 @@ RenderSettings:
   m_FogDensity: 0.01
   m_LinearFogStart: 0
   m_LinearFogEnd: 300
-  m_AmbientSkyColor: {r: 0.212, g: 0.227, b: 0.259, a: 1}
+  m_AmbientSkyColor: {r: 0.57758063, g: 0.57758063, b: 0.57758063, a: 1}
   m_AmbientEquatorColor: {r: 0.114, g: 0.125, b: 0.133, a: 1}
   m_AmbientGroundColor: {r: 0.047, g: 0.043, b: 0.035, a: 1}
   m_AmbientIntensity: 1
@@ -96,7 +96,7 @@ LightmapSettings:
     m_ExportTrainingData: 0
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
-  m_LightingDataAsset: {fileID: 112000000, guid: fe860c8b93c0ef04aa7dd1ef67b91c28, type: 2}
+  m_LightingDataAsset: {fileID: 112000000, guid: 92b6e2f92be2f0543af14a8d7cfeccc2, type: 2}
   m_LightingSettings: {fileID: 4890085278179872738, guid: f71d6823ed23732469a5d68c8118d141, type: 2}
 --- !u!196 &4
 NavMeshSettings:
@@ -286,10 +286,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   particleSystemPrefab: {fileID: 0}
   referenceObject: {fileID: 1345880079}
-  snowModelAsset: {fileID: 2100000, guid: 8ef7a75dac8003441912e64155e7cc55, type: 2}
+  snowModelAsset: {fileID: 10308, guid: 0000000000000000f000000000000000, type: 0}
   meshMaterial: {fileID: 2100000, guid: 2f4b34c7cd860da47a503438cdaa313e, type: 2}
   activeParticleSystem: {fileID: 0}
-  meshTarget: {fileID: 0}
+  meshTarget: {fileID: 50111141}
 --- !u!4 &1044853064
 Transform:
   m_ObjectHideFlags: 0
@@ -383,7 +383,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rainModelAsset: {fileID: 5022602860645237092, guid: f67f5ed6c1a62e54d8ac1e61b885d25a, type: 3}
-  snowModelAsset: {fileID: 5022602860645237092, guid: f67f5ed6c1a62e54d8ac1e61b885d25a, type: 3}
+  snowModelAsset: {fileID: 5022602860645237092, guid: 755b8e9dedc81f94d9f67e685841746c, type: 3}
   particleCollisionHandler: {fileID: 1543035354}
   SnowParticleCollisionHandler: {fileID: 1044853063}
 --- !u!114 &1058297138
@@ -546,7 +546,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c12d929a7f62c48adbe9ff45c9a33ff0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Asset: {fileID: 11400000, guid: 9c83720eab7e74144850ef3598d0a5ae, type: 2}
+  m_Asset: {fileID: 11400000, guid: bebbe560d65fbf344987802087d5b828, type: 2}
   m_SplatScale: 1
   m_OpacityScale: 1
   m_SHOrder: 3
