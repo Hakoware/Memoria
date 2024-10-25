@@ -85,7 +85,7 @@ public class ParticleCollisionHandler : MonoBehaviour
         // emision area (ideal big box)
         var shapeModule = rainParticleSystem.shape;
         shapeModule.shapeType = ParticleSystemShapeType.Rectangle;  // Usa una caja para cubrir un área amplia
-        shapeModule.scale = new Vector3(10.0f, 10.0f, 10.0f); 
+        shapeModule.scale = new Vector3(20.0f, 20.0f, 20.0f); 
         //shapeModule.position = new Vector3(0, 5.0f, 0);
         //shapeModule.rotation = new Vector3(90, 0, 0);
         //shapeModule.rotation = new Vector3(0f, 0f, 0f);
@@ -134,11 +134,11 @@ public class ParticleCollisionHandler : MonoBehaviour
     
     void ConfigureSplashSubEmitter(ParticleSystem parentParticleSystem)
     {
-        // Crear el sistema de partículas del splash
+        // create particle system for splash
         ParticleSystem splashParticleSystem = new GameObject("SplashParticles").AddComponent<ParticleSystem>();
         splashParticleSystem.transform.SetParent(parentParticleSystem.transform); 
         
-        // Configuración del subemitter (splash)
+        // splash config
         var mainModule = splashParticleSystem.main;
         mainModule.startLifetime = 0.3f;
         //mainModule.startSpeed = 1.0f;
@@ -161,11 +161,11 @@ public class ParticleCollisionHandler : MonoBehaviour
         //sizeCurve.AddKey(0.0f, 0.8f);
         //sizeCurve.AddKey(1.0f, 0.0f); 
         
-        sizeCurve.AddKey(0.0f, 0.0f);  // Inicio (valor = 0 en tiempo 0)
-        sizeCurve.AddKey(0.2f, 0.5f);  // Punto intermedio (aumenta)
-        sizeCurve.AddKey(0.5f, 1.0f);  // Pico máximo en el medio
-        sizeCurve.AddKey(0.8f, 0.5f);  // Disminuye
-        sizeCurve.AddKey(1.0f, 0.0f);  // Fin (valor = 0 en tiempo 1)
+        sizeCurve.AddKey(0.0f, 0.0f);  
+        sizeCurve.AddKey(0.2f, 0.5f);
+        sizeCurve.AddKey(0.5f, 1.0f);  
+        sizeCurve.AddKey(0.8f, 0.5f);   
+        sizeCurve.AddKey(1.0f, 0.0f);   
 
         sizeOverLifeTime.size = new ParticleSystem.MinMaxCurve(1.0f, sizeCurve);
 
@@ -196,7 +196,7 @@ public class ParticleCollisionHandler : MonoBehaviour
             Debug.LogWarning("Not material assigned");
         }
 
-        // Añadir el subemitter al sistema de partículas de lluvia
+        // add subemiter to particle system
         var subEmittersModule = parentParticleSystem.subEmitters;
         subEmittersModule.enabled = true;
         subEmittersModule.AddSubEmitter(splashParticleSystem, ParticleSystemSubEmitterType.Collision, ParticleSystemSubEmitterProperties.InheritNothing);
