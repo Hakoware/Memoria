@@ -2,6 +2,7 @@ using UnityEngine;
 using UnityEngine.UIElements;
 using System.Collections.Generic;
 
+
 public class SnowParticleCollisionHandler : MonoBehaviour
 {
     public ParticleSystem particleSystemPrefab;
@@ -9,14 +10,19 @@ public class SnowParticleCollisionHandler : MonoBehaviour
     public Transform referenceObject;
     public Material snowModelAsset;
     public Material meshMaterial;
-    
+
     // Public particle system
     public ParticleSystem activeParticleSystem;
-    
+
     public GameObject meshTarget;
     void Start()
     {
-        
+     
+        RenderSettings.fog = true;
+        RenderSettings.fogColor = Color.white;
+        RenderSettings.fogMode = FogMode.Exponential;
+        RenderSettings.fogDensity = 0.02f;
+
         if (meshTarget != null)
         {
             MeshRenderer meshRenderer = meshTarget.GetComponent<MeshRenderer>();
@@ -38,26 +44,24 @@ public class SnowParticleCollisionHandler : MonoBehaviour
         {
             Debug.LogWarning("Target object is not assigned.");
         }
-        
-        
-        // Create particle system
+
+
         // Create particle system
         if (referenceObject != null)
         {
             GameObject particleObject = new GameObject("SnowParticleSystem");
             // Height start
-            float additionalHeight = 10f; 
+            float additionalHeight = 10f;
             Vector3 particlePosition = referenceObject.position + Vector3.up * additionalHeight;
-            
-            particleObject.transform.position = referenceObject.position + Vector3.up*additionalHeight;
+
+            particleObject.transform.position = referenceObject.position + Vector3.up * additionalHeight;
             // Instance
-            //activeParticleSystem = Instantiate(particleSystemPrefab, particlePosition, Quaternion.identity);
             activeParticleSystem = particleObject.AddComponent<ParticleSystem>();
-            // Ratotion to aling "y" axis
+            
             activeParticleSystem.transform.rotation = Quaternion.Euler(90f, 0f, 0f);
-            // Configure the particle system
-            ConfigureRainParticleSystem(activeParticleSystem);
-            // Activate the particle system
+     
+            ConfigureSnowParticleSystem(activeParticleSystem);
+           
             activeParticleSystem.Play();
         }
         else
@@ -66,73 +70,73 @@ public class SnowParticleCollisionHandler : MonoBehaviour
         }
     }
 
-    void ConfigureRainParticleSystem(ParticleSystem rainParticleSystem)
-    { 
+    void ConfigureSnowParticleSystem(ParticleSystem snowParticleSystem)
+    {
         // Rotate the particle system
         // Gravity and main module
-        var mainModule = rainParticleSystem.main;
-        mainModule.startSpeed = Random.Range(10.0f, 20.0f);
-        mainModule.gravityModifier = 9.8f; 
-        mainModule.startLifetime = Random.Range(1.0f, 2.0f); 
+        var mainModule = snowParticleSystem.main;
+        mainModule.startSpeed = Random.Range(0.5f, 2.0f);
+        mainModule.gravityModifier = 0.05f;  
+        mainModule.startLifetime = Random.Range(5.0f, 12.0f);
         mainModule.scalingMode = ParticleSystemScalingMode.Shape;
-        mainModule.startSize = Random.Range(0.01f, 0.03f);
-        mainModule.maxParticles = 10000; 
-        //test
-        //mainModule.startSize = 0.5f;
-        
-        // emision area (ideal big box)
-        var shapeModule = rainParticleSystem.shape;
-        shapeModule.shapeType = ParticleSystemShapeType.Rectangle;  // Usa una caja para cubrir un área amplia
-        shapeModule.scale = new Vector3(10.0f, 10.0f, 10.0f); 
-        //shapeModule.position = new Vector3(0, 5.0f, 0);
-        //shapeModule.rotation = new Vector3(90, 0, 0);
-        //shapeModule.rotation = new Vector3(0f, 0f, 0f);
-        
-        // Collison handler
-        var collisionModule = rainParticleSystem.collision;
+        mainModule.startSize = Random.Range(0.02f, 0.05f); 
+        mainModule.maxParticles = 10000;
+        mainModule.simulationSpace = ParticleSystemSimulationSpace.World; 
+
+        // Emission rate for continuous snow
+        var emissionModule = snowParticleSystem.emission;
+        emissionModule.rateOverTime = 500f; 
+
+        // Emission area (ideal wide box)
+        var shapeModule = snowParticleSystem.shape;
+        shapeModule.shapeType = ParticleSystemShapeType.Box;  
+        shapeModule.scale = new Vector3(100.0f, 1.0f, 100.0f); 
+
+        // Collision handler
+        var collisionModule = snowParticleSystem.collision;
         collisionModule.enabled = true;
         collisionModule.enableDynamicColliders = true;
         collisionModule.type = ParticleSystemCollisionType.World;
         collisionModule.collidesWith = LayerMask.GetMask("Default", "Ground", "MeshColliderLayer");
-        //collisionModule.collidesWith = LayerMask.GetMask("Ground");
-        collisionModule.bounce = 0.0f; // Bounce
-        collisionModule.lifetimeLoss = 0.5f;  
-        collisionModule.dampen = 1f;
+        collisionModule.bounce = 0.0f;
+        collisionModule.lifetimeLoss = 0.8f;  // 
+        collisionModule.dampen = 0.7f; // More dampening for softer landing
         collisionModule.quality = ParticleSystemCollisionQuality.High;
 
-
-        // render (material and mesh)
-        var renderer = rainParticleSystem.GetComponent<ParticleSystemRenderer>();
-        //renderer.renderMode = ParticleSystemRenderMode.Billboard;
-        //renderer.renderMode = ParticleSystemRenderMode.Mesh;
-        renderer.renderMode = ParticleSystemRenderMode.Stretch;
+        // Renderer (material and mesh)
+        var renderer = snowParticleSystem.GetComponent<ParticleSystemRenderer>();
+        renderer.renderMode = ParticleSystemRenderMode.Billboard; 
+        renderer.mesh = Resources.GetBuiltinResource<Mesh>("Sphere.fbx"); 
         renderer.cameraVelocityScale = 0.0f;
         renderer.velocityScale = 0.01f;
-        renderer.lengthScale = 4f;
+        renderer.lengthScale = 1f;
 
-        //renderer.mesh = Resources.GetBuiltinResource<Mesh>("Sphere.fbx"); // Sphere render
-        //renderer.mesh = Resources.GetBuiltinResource<Mesh>("Quad.fbx");
-
-        renderer.mesh = null;
         if (snowModelAsset != null)
         {
-            renderer.material = snowModelAsset;  // assign the material
+            renderer.material = snowModelAsset;
+            renderer.material.color = Color.white; 
         }
         else
         {
-            Debug.LogWarning("Not material assigned");
+            Debug.LogWarning("No material assigned");
         }
 
+        // Add wind effect to make snow more dynamic
+        var forceOverLifetime = snowParticleSystem.forceOverLifetime;
+        forceOverLifetime.enabled = true;
+        forceOverLifetime.x = new ParticleSystem.MinMaxCurve(-0.5f, 0.5f); 
+        forceOverLifetime.z = new ParticleSystem.MinMaxCurve(-0.5f, 0.5f); 
+
+        // Add noise module for random wind variation
+        var noiseModule = snowParticleSystem.noise;
+        noiseModule.enabled = true;
+        noiseModule.strength = new ParticleSystem.MinMaxCurve(0.1f, 0.3f); //
+        noiseModule.frequency = 0.5f; // Frequency of the noise effect
+        noiseModule.scrollSpeed = 0.2f; // Speed at which the noise moves
     }
-    
+
     public ParticleSystem GetActiveParticleSystem()
     {
         return activeParticleSystem;
     }
-    
-
-    
-    
-    
-    
 }
