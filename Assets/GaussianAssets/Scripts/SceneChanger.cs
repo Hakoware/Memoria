@@ -25,6 +25,7 @@ public class SceneChangerUIToolkit : MonoBehaviour
 
         dropdown.RegisterValueChangedCallback(e =>
         {
+            Debug.Log("aca la scene"+ e.newValue);
             ChangeScene(e.newValue);
         });
 

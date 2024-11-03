@@ -429,10 +429,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   particleSystemPrefab: {fileID: 0}
   referenceObject: {fileID: 1345880079}
-  snowModelAsset: {fileID: 2100000, guid: 8ef7a75dac8003441912e64155e7cc55, type: 2}
+  snowModelAsset: {fileID: 10308, guid: 0000000000000000f000000000000000, type: 0}
   meshMaterial: {fileID: 2100000, guid: 2f4b34c7cd860da47a503438cdaa313e, type: 2}
   activeParticleSystem: {fileID: 0}
-  meshTarget: {fileID: 0}
+  meshTarget: {fileID: 1338929349}
 --- !u!4 &1044853064
 Transform:
   m_ObjectHideFlags: 0
